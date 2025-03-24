@@ -7,5 +7,4 @@ import java.util.Date;
 
 public interface ICalcDepreciacion {
     double calculoDepreciacion(Bien bien, ITablaAmortizacion tablas, Date fechaSiniestro);
-
 }
