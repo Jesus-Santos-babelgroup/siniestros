@@ -39,6 +39,5 @@ public class ApplicationRunner implements CommandLineRunner {
         double valorFinal = ;
 
         System.out.println("\nLa valoración final del bien es: " + valorFinal + " €");
-
     }
 }
