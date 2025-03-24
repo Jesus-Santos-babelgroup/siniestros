@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 @Component
 public class ApplicationRunner implements CommandLineRunner {
+
     @Override
     public void run(String... args) throws Exception {
         Scanner scanner = new Scanner(System.in);
@@ -18,11 +19,12 @@ public class ApplicationRunner implements CommandLineRunner {
         Categorias categoria = Categorias.valueOf(scanner.nextLine().toUpperCase());
 
         System.out.print("Ingrese el valor de compra del bien: \n");
-        double valorCompra = scanner.nextDouble();
+        double valorCompra = Double.valueOf(scanner.nextLine());
 
         System.out.print("Ingrese la fecha de compra del bien: (formato YYYY-MM-DD) \n");
         String fechaCompraStr = scanner.nextLine();
         LocalDate fechaCompra = LocalDate.parse(fechaCompraStr);
+        System.out.println(fechaCompra);
 
         Bien bien = new Bien();
 
@@ -30,7 +32,7 @@ public class ApplicationRunner implements CommandLineRunner {
         bien.setValorCompra(valorCompra);
         bien.setCategoria(categoria);
 
-        System.out.println("Selecciona la compañía de seguros (Mapfre/Allianz/Mutua Madrileña):  \n");
+        System.out.println("Selecciona la compañía de seguros (General/Mapfre/Allianz/Mutua Madrileña):  \n");
         String companiaSeleccionada = scanner.nextLine();
 
         //calcular valor para el bien con la compañia elegida
