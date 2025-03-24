@@ -8,20 +8,23 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 @Service
-public class CalcDepreciacionMapfre implements ICalcDepreciacion {
+public class CalcDepreciacionGeneral implements ICalcDepreciacion {
 
     @Override
     public double calculoDepreciacion(Bien bien, ITablaAmortizacion tablas, Date fechaSiniestro) {  //Actualizar luego
         double depreciacionAnual = 1.0 / tablas.getAnosAmortizacion(); //Esto viene en las tablas
+        double valorInicial = bien.getValorCompra();
+        double valorFinal = 0.;
+        double valorDepreciado = bien.getValorCompra();
         long anosTranscurridos = ChronoUnit.YEARS.between(bien.getFechaCompra(), fechaSiniestro);
-        double valorDepreciado = 0.;
-        if (anosTranscurridos <= tablas.getAnosAmortizacion()) {
-            valorDepreciado = bien.getValorCompra() * (depreciacionAnual * anosTranscurridos);
-        } else {
-            valorDepreciado = bien.getValorCompra() * 0.17;
+        for (int i = 0; i < anosTranscurridos; i++) {
+            valorDepreciado -= valorDepreciado * depreciacionAnual;
         }
-        return valorDepreciado;
+        if (anosTranscurridos <= tablas.getAnosAmortizacion()) {
+            valorFinal = valorDepreciado;
+        } else {
+            valorFinal = valorInicial * 0.15;
+        }
+        return valorFinal;
     }
-
-
 }
