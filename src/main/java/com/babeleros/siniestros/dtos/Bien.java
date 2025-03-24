@@ -3,11 +3,12 @@ package com.babeleros.siniestros.dtos;
 
 import com.babeleros.siniestros.Categorias;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Bien implements IBienAfectado{
 
-    private Date fechaCompra;
+    private LocalDate fechaCompra;
     private double valorCompra;
     private Categorias categoria;
 
@@ -20,11 +21,11 @@ public class Bien implements IBienAfectado{
         return categoria;
     }
 
-    public Date getFechaCompra() {
+    public LocalDate getFechaCompra() {
         return fechaCompra;
     }
 
-    public void setFechaCompra(Date fechaCompra) {
+    public void setFechaCompra(LocalDate fechaCompra) {
         this.fechaCompra = fechaCompra;
     }
 
