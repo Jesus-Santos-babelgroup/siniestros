@@ -8,7 +8,7 @@ public class TablaAmortizacion implements ITablaAmortizacion {
 
     private String compañia;
     private int valorResidual;
-    private Map<Categorias, Integer> tabla;
+    private Map<Categorias, Double> tabla;
 
     public TablaAmortizacion(String compañia, int valorResidual) {
         this.compañia = compañia;
@@ -16,7 +16,7 @@ public class TablaAmortizacion implements ITablaAmortizacion {
         this.tabla = null;
     }
 
-    public TablaAmortizacion(String compañia, int valorResidual, Map<Categorias, Integer> tabla) {
+    public TablaAmortizacion(String compañia, int valorResidual, Map<Categorias, Double> tabla) {
         this.compañia = compañia;
         this.valorResidual = valorResidual;
         this.tabla = tabla;
@@ -34,16 +34,21 @@ public class TablaAmortizacion implements ITablaAmortizacion {
         this.valorResidual = valorResidual;
     }
 
-    public Map<Categorias, Integer> getTabla() {
+    public Map<Categorias, Double> getTabla() {
         return tabla;
     }
 
-    public void setTabla(Map<Categorias, Integer> tabla) {
+    public void setTabla(Map<Categorias, Double> tabla) {
         this.tabla = tabla;
     }
 
     @Override
-    public void addToTable(Categorias categoria, int tiempoAmortizacion) {
+    public void addToTable(Categorias categoria, Double tiempoAmortizacion) {
         tabla.put(categoria, tiempoAmortizacion);
+    }
+
+    @Override
+    public Double getTiempoAmortizacion(Categorias categorias) {
+        return tabla.get(categorias);
     }
 }
