@@ -8,5 +8,5 @@ public enum Categorias {
     TABLET,
     COCHE,
     FRIGORIFICO,
-    HORNO;
+    HORNO
 }
